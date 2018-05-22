@@ -6,7 +6,7 @@ services:
     image: gmcgoldrick/hybrid_database
     # set default mysql root password, change as needed
     environment:
-      MYSQL_ROOT_PASSWORD: mysql_password
+      MYSQL_ROOT_PASSWORD: "DockerCon!!!"
     # Expose port 3306 to host. 
     ports:
       - "3306:3306" 
@@ -25,6 +25,6 @@ networks:
   back-tier:
   front-tier:
 
-secrets:
-  mysql_password:
-    file: ./mysql_password.txt
+#secrets:
+#  mysql_password:
+#    file: ./mysql_password.txt

@@ -34,7 +34,7 @@ services:
 networks:
   back-tier:
   front-tier:
-    external: true
+#    external: true
 
 #secrets:
 #  mysql_password:

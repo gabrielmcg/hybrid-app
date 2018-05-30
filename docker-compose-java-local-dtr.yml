@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+
+  database:
+    image: gab-dtr.cloudra.local/java/database
+    # set default mysql root password, change as needed
+    environment:
+      MYSQL_ROOT_PASSWORD: "DockerCon!!!"
+    # Expose port 3306 to host. 
+    ports:
+      - "3306:3306" 
+    networks:
+      - back-tier
+
+  webserver:
+    image: gab-dtr.cloudra.local/java/java_web
+    ports:
+      - "8080:8080" 
+    networks:
+      - front-tier
+      - back-tier
+
+networks:
+  back-tier:
+  front-tier:
+ 

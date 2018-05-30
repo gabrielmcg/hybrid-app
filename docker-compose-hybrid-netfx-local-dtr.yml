@@ -3,7 +3,7 @@ version: "3"
 services:
 
   database:
-    image: gmcgoldrick/hybrid_database
+    image: gab-dtr.cloudra.local/java/database
     # set default mysql root password, change as needed
     environment:
       MYSQL_ROOT_PASSWORD: "DockerCon!!!"
@@ -14,9 +14,9 @@ services:
       - back-tier
 
   webserver:
-    image: gmcgoldrick/hybrid_java_web_2
+    image: gab-dtr.cloudra.local/java/java_web:2
     ports:
-      - "8089:8080" 
+      - "8080:8080" 
     networks:
       - front-tier
       - back-tier
@@ -24,7 +24,7 @@ services:
       BASEURI: http://dotnet-api/api/users
 
   dotnet-api:
-    image: gmcgoldrick/hybrid_dotnet_api
+    image: gab-dtr.cloudra.local/dotnet/dotnet_api
     ports:
       - "57989:80"
     networks:
@@ -34,8 +34,4 @@ services:
 networks:
   back-tier:
   front-tier:
-#    external: true
 
-#secrets:
-#  mysql_password:
-#    external: true

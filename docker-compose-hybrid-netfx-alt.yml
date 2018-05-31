@@ -6,8 +6,10 @@ services:
     image:  gmcgoldrick/hybrid_database
     environment:
       MYSQL_ROOT_PASSWORD: "DockerCon!!!"
+    ports:
+      - "3306:3306" 
     networks:
-      back-tier#: null
+      - back-tier
     deploy:
 #      endpoint_mode: dnsrr
       placement:
@@ -17,14 +19,13 @@ services:
   dotnet-api:
     image: gmcgoldrick/hybrid_dotnet_api
     ports:
-    - mode: host
-      published: 8081
-      target: 80
+      - "57989:80"
     networks:
-      back-tier: null
+      - front-tier
+      - back-tier
     deploy:
 #      mode: global
-#      endpoint_mode: dnsrr
+      endpoint_mode: dnsrr
       placement:
         constraints:
         - node.platform.os == windows
@@ -34,12 +35,10 @@ services:
     environment:
       BASEURI: http://dotnet-api/api/users
     ports:
-    - mode: ingress
-      published: 8080
-      target: 8080
+      - "8089:8080" 
     networks:
-      back-tier: null
-      front-tier: null
+      - front-tier
+      - back-tier
     deploy:
       placement:
         constraints:

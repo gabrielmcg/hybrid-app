@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 
 services:
 
@@ -24,7 +24,7 @@ services:
       - front-tier
       - back-tier
     deploy:
-#      mode: global
+      mode: global
       endpoint_mode: dnsrr
       placement:
         constraints:

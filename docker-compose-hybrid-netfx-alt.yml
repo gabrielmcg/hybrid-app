@@ -19,7 +19,9 @@ services:
   dotnet-api:
     image: gmcgoldrick/hybrid_dotnet_api
     ports:
-      - "57989:80"
+    - mode: host
+      published: 57989
+      target: 80
     networks:
       - front-tier
       - back-tier

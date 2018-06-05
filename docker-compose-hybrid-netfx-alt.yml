@@ -7,7 +7,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "DockerCon!!!"
     ports:
-      - "3306:3306" 
+    - mode: host
+      published: 3306
+      target: 3306    
     networks:
       - back-tier
     deploy:
